@@ -14,7 +14,10 @@
       "play": "Play banner",
       "pause": "Pause banner"
     },
-    "mainPage": { "label": "Return to main page", "url": "https://you-ming-hu.github.io/" },
+    "mainPage": {
+      "label": "Return to main page",
+      "url": "https://youminghu0930-public.github.io/golf-swing-analysis-poc/"
+    },
     "footer": "Golf swing pose estimation"
   },
   "sections": [
@@ -26,18 +29,48 @@
         "Golf-specific postures and arm occlusions exposed weaknesses in general-purpose pose estimation. I led a targeted annotation effort that reduced labeling workload by approximately two-thirds and increased labeling speed by approximately 3×, delivering 30,000 annotated frames in two weeks for around US$3,000. The resulting lightweight model resolved approximately 80% of the previously difficult examples assessed, suggesting that better data coverage could improve accuracy without a larger architecture."
       ],
       "metricGroups": [
-        { "title": "Model performance", "metrics": [
-        { "value": "80%", "label": "Previously difficult examples resolved" },
-        { "value": "YOLO nano", "label": "Inference speed" }
-        ] },
-        { "title": "Annotation outcomes", "metrics": [
-        { "value": "67%", "label": "Annotation workload reduction" },
-        { "value": "3×", "label": "Labeling speed improvement" },
-        { "value": "480k", "label": "Joints annotated" },
-        { "value": "30k", "label": "Frames annotated" },
-        { "value": "2 weeks", "label": "Annotation time" },
-        { "value": "US$3,000", "label": "Annotation cost" }
-        ] }
+        {
+          "title": "Model performance",
+          "metrics": [
+            {
+              "value": "80%",
+              "label": "Previously difficult examples resolved"
+            },
+            {
+              "value": "YOLO nano",
+              "label": "Inference speed"
+            }
+          ]
+        },
+        {
+          "title": "Annotation outcomes",
+          "metrics": [
+            {
+              "value": "67%",
+              "label": "Annotation workload reduction"
+            },
+            {
+              "value": "3×",
+              "label": "Labeling speed improvement"
+            },
+            {
+              "value": "480k",
+              "label": "Joints annotated"
+            },
+            {
+              "value": "30k",
+              "label": "Frames annotated"
+            },
+            {
+              "value": "2 weeks",
+              "label": "Annotation time"
+            },
+            {
+              "value": "US$3,000",
+              "label": "Annotation cost"
+            }
+          ]
+        }
       ]
     },
     {
@@ -55,19 +88,27 @@
       "subsections": [
         {
           "title": "Prioritize useful footage",
-          "paragraphs": ["The first challenge was controlling annotation volume. I worked with the team to define more objective video-selection criteria, focusing the effort on footage relevant to the observed prediction failures. This reduced the annotation workload by approximately two-thirds."]
+          "paragraphs": [
+            "The first challenge was controlling annotation volume. I worked with the team to define more objective video-selection criteria, focusing the effort on footage relevant to the observed prediction failures. This reduced the annotation workload by approximately two-thirds."
+          ]
         },
         {
           "title": "Make joint definitions actionable",
-          "paragraphs": ["Annotators needed to make consistent decisions in ambiguous or occluded poses. I refined several joint definitions and documented their rationale, alongside practical labeling techniques. These changes reduced ambiguity and helped increase labeling speed to approximately 3× its previous rate."]
+          "paragraphs": [
+            "Annotators needed to make consistent decisions in ambiguous or occluded poses. I refined several joint definitions and documented their rationale, alongside practical labeling techniques. These changes reduced ambiguity and helped increase labeling speed to approximately 3× its previous rate."
+          ]
         },
         {
           "title": "Coordinate annotation delivery",
-          "paragraphs": ["I managed an outsourced annotation team of around 10 people, using the internal management tool to coordinate the work. The team delivered approximately 480,000 joint annotations across 30,000 frames in about two weeks, at a cost of around US$3,000."]
+          "paragraphs": [
+            "I managed an outsourced annotation team of around 10 people, using the internal management tool to coordinate the work. The team delivered approximately 480,000 joint annotations across 30,000 frames in about two weeks, at a cost of around US$3,000."
+          ]
         },
         {
           "title": "Connect annotation to model iteration",
-          "paragraphs": ["I established a data-preparation pipeline to combine existing and newly annotated datasets, followed by model training, inference, Core ML conversion, and quantization. Working with the iOS team, I carried the resulting model through to deployment on iPhones."]
+          "paragraphs": [
+            "I established a data-preparation pipeline to combine existing and newly annotated datasets, followed by model training, inference, Core ML conversion, and quantization. Working with the iOS team, I carried the resulting model through to deployment on iPhones."
+          ]
         }
       ],
       "note": "Proprietary selection criteria, training settings, and internal tooling details are omitted."
@@ -122,80 +163,84 @@
     }
   ],
   "demo": {
-        "before": "General-purpose model",
-        "after": "Golf-specific model",
-        "modelTag": "{label} · {model}",
-        "listTitle": "Swing videos",
-        "videoTitle": "Video comparison",
-        "snapshots": {
-          "title": "Snapshot highlights",
-          "inspectionHint": "Hover to inspect a joint or connection.",
-          "carousel": "carousel",
-          "loading": "Loading snapshot highlights…",
-          "empty": "No snapshots have been selected yet.",
-          "error": "Snapshot highlights could not be loaded. The video viewer is still available below.",
-          "imageError": "This snapshot image could not be loaded.",
-          "previous": "Previous snapshot",
-          "next": "Next snapshot",
-          "navigation": "Choose a snapshot",
-          "itemLabel": "Swing {video} · Frame {frame}",
-          "show": "Show swing {video}, frame {frame}",
-          "frame": "Frame {frame}",
-          "position": "{current} / {total} · Swing {video} · Frame {frame}",
-          "focus": "Focus: {joints}"
-        },
-        "creditLabel": "Video source:",
-        "creditLink": "Original Instagram post ↗",
-        "viewLabel": "Camera view",
-        "views": { "all": "All views", "face-on": "Face-on", "down-the-line": "Down the line" },
-        "clipLabel": "Swing {id}",
-        "videoCount": "{count} videos",
-        "frame": "Frame {current} / {total}",
-        "slider": "Video frame",
-        "start": "Jump to start",
-        "previous": "Previous frame",
-        "play": "Play",
-        "stop": "Stop",
-        "next": "Next frame",
-        "end": "Jump to end",
-        "loading": "Loading swing…",
-        "loadVideo": "Tap to load video",
-        "loadingDemo": "Loading the video demo…",
-        "loadingList": "Loading video list…",
-        "ready": "Ready",
-        "error": "This swing could not be loaded. Select a video to try again.",
-        "empty": "No videos available.",
-        "keyboard": "Press Space to play or pause. Tap ← / → to step one frame; hold to repeat.",
-        "inspectionHint": "Hover to inspect a joint or connection. Click to select; Shift-click to select multiple joints or connections.",
-        "panZoomLabel": "Linked pan and zoom",
-        "zoomIn": "Zoom in",
-        "zoomOut": "Zoom out",
-        "zoomLevel": "Zoom level",
-        "resetView": "Reset view",
-        "panZoomHint": "Scroll or pinch to zoom; drag to pan when zoomed in.",
-        "skeletonLabel": "{view} skeleton",
-        "featureLabel": "{view} · {feature}",
-        "connectionLabel": "{from} — {to}",
-        "jointNames": {
-          "nose": "Nose",
-          "atlas": "Atlas",
-          "top_head": "Top of head",
-          "left_eye": "Left eye",
-          "right_eye": "Right eye",
-          "left_ear": "Left ear",
-          "right_ear": "Right ear",
-          "left_shoulder": "Left shoulder",
-          "right_shoulder": "Right shoulder",
-          "left_elbow": "Left elbow",
-          "right_elbow": "Right elbow",
-          "left_wrist": "Left wrist",
-          "right_wrist": "Right wrist",
-          "left_hip": "Left hip",
-          "right_hip": "Right hip",
-          "left_knee": "Left knee",
-          "right_knee": "Right knee",
-          "left_ankle": "Left ankle",
-          "right_ankle": "Right ankle"
-        }
-      }
+    "before": "General-purpose model",
+    "after": "Golf-specific model",
+    "modelTag": "{label} · {model}",
+    "listTitle": "Swing videos",
+    "videoTitle": "Video comparison",
+    "snapshots": {
+      "title": "Snapshot highlights",
+      "inspectionHint": "Hover to inspect a joint or connection.",
+      "carousel": "carousel",
+      "loading": "Loading snapshot highlights…",
+      "empty": "No snapshots have been selected yet.",
+      "error": "Snapshot highlights could not be loaded. The video viewer is still available below.",
+      "imageError": "This snapshot image could not be loaded.",
+      "previous": "Previous snapshot",
+      "next": "Next snapshot",
+      "navigation": "Choose a snapshot",
+      "itemLabel": "Swing {video} · Frame {frame}",
+      "show": "Show swing {video}, frame {frame}",
+      "frame": "Frame {frame}",
+      "position": "{current} / {total} · Swing {video} · Frame {frame}",
+      "focus": "Focus: {joints}"
+    },
+    "creditLabel": "Video source:",
+    "creditLink": "Original Instagram post ↗",
+    "viewLabel": "Camera view",
+    "views": {
+      "all": "All views",
+      "face-on": "Face-on",
+      "down-the-line": "Down the line"
+    },
+    "clipLabel": "Swing {id}",
+    "videoCount": "{count} videos",
+    "frame": "Frame {current} / {total}",
+    "slider": "Video frame",
+    "start": "Jump to start",
+    "previous": "Previous frame",
+    "play": "Play",
+    "stop": "Stop",
+    "next": "Next frame",
+    "end": "Jump to end",
+    "loading": "Loading swing…",
+    "loadVideo": "Tap to load video",
+    "loadingDemo": "Loading the video demo…",
+    "loadingList": "Loading video list…",
+    "ready": "Ready",
+    "error": "This swing could not be loaded. Select a video to try again.",
+    "empty": "No videos available.",
+    "keyboard": "Press Space to play or pause. Tap ← / → to step one frame; hold to repeat.",
+    "inspectionHint": "Hover to inspect a joint or connection. Click to select; Shift-click to select multiple joints or connections.",
+    "panZoomLabel": "Linked pan and zoom",
+    "zoomIn": "Zoom in",
+    "zoomOut": "Zoom out",
+    "zoomLevel": "Zoom level",
+    "resetView": "Reset view",
+    "panZoomHint": "Scroll or pinch to zoom; drag to pan when zoomed in.",
+    "skeletonLabel": "{view} skeleton",
+    "featureLabel": "{view} · {feature}",
+    "connectionLabel": "{from} — {to}",
+    "jointNames": {
+      "nose": "Nose",
+      "atlas": "Atlas",
+      "top_head": "Top of head",
+      "left_eye": "Left eye",
+      "right_eye": "Right eye",
+      "left_ear": "Left ear",
+      "right_ear": "Right ear",
+      "left_shoulder": "Left shoulder",
+      "right_shoulder": "Right shoulder",
+      "left_elbow": "Left elbow",
+      "right_elbow": "Right elbow",
+      "left_wrist": "Left wrist",
+      "right_wrist": "Right wrist",
+      "left_hip": "Left hip",
+      "right_hip": "Right hip",
+      "left_knee": "Left knee",
+      "right_knee": "Right knee",
+      "left_ankle": "Left ankle",
+      "right_ankle": "Right ankle"
+    }
+  }
 }

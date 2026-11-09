@@ -168,7 +168,23 @@
     "modelTag": "{label} · {model}",
     "listTitle": "Swing videos",
     "videoTitle": "Video comparison",
+    "instructionsLabel": "Video instructions",
+    "instructions": [
+      { "gesture": "Scroll or pinch", "action": "Zoom in or out." },
+      { "gesture": "Drag when zoomed in", "action": "Pan the image." },
+      { "gesture": "Space", "action": "Play or pause." },
+      { "gesture": "Left / right arrow", "action": "Tap for one frame; hold to repeat." },
+      { "gesture": "Hover", "action": "Inspect a joint or connection." },
+      { "gesture": "Click", "action": "Select a single joint or connection." },
+      { "gesture": "Shift-click", "action": "Select multiple joints or connections." }
+    ],
     "snapshots": {
+      "instructionsLabel": "Snapshot instructions",
+      "instructions": [
+        { "gesture": "Scroll or pinch", "action": "Zoom in or out." },
+        { "gesture": "Drag when zoomed in", "action": "Pan the image." },
+        { "gesture": "Hover", "action": "Inspect a joint or connection." }
+      ],
       "title": "Snapshot highlights",
       "inspectionHint": "Hover to inspect a joint or connection.",
       "carousel": "carousel",

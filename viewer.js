@@ -2,6 +2,7 @@ import { createFrameSeeker } from './frame-seeker.js';
 import { createPoseOverlay } from './pose-overlay.js';
 import { installFrameKeys } from './frame-keys.js';
 import { installLinkedView } from './linked-view.js';
+import { createViewerInfo } from './viewer-info.js';
 import { comparisonLabels } from './model-labels.js';
 import { readCatalog } from './catalog.js';
 const make = (tag, text, className) => {
@@ -98,6 +99,7 @@ export async function mountViewer(root, copy, { priorityReady } = {}) {
   const meta = make('div', undefined, 'player-meta');
   const frameLabel = make('span');
   const status = make('span', copy.loading);
+  status.className = 'player-status';
   status.setAttribute('role', 'status');
   meta.append(frameLabel, status);
   const controls = make('div', undefined, 'playback-controls');
@@ -108,28 +110,17 @@ export async function mountViewer(root, copy, { priorityReady } = {}) {
     button.setAttribute('aria-label', copy[key]);
     controls.append(button); buttons[key] = button;
   }
-  const zoomControls = make('div', undefined, 'zoom-controls');
-  zoomControls.setAttribute('role', 'group'); zoomControls.setAttribute('aria-label', copy.panZoomLabel);
-  const zoomOut = make('button', '−'), zoomIn = make('button', '+'), resetView = make('button', copy.resetView), zoomLabel = make('output');
-  for (const [button, label] of [[zoomOut, copy.zoomOut], [zoomIn, copy.zoomIn], [resetView, copy.resetView]]) {
-    button.type = 'button'; button.title = label; button.setAttribute('aria-label', label);
-  }
-  zoomLabel.setAttribute('aria-label', copy.zoomLevel);
-  zoomControls.append(zoomOut, zoomLabel, zoomIn, resetView);
   const linkedView = installLinkedView(viewports, scenes, state => {
     overlays.forEach(overlay => overlay.setTransform(state));
-    zoomLabel.textContent = `${Math.round(state.zoom * 100)}%`;
-    zoomOut.disabled = state.zoom <= 1; zoomIn.disabled = state.zoom >= 6;
-    resetView.disabled = state.zoom === 1;
   });
-  zoomOut.onclick = () => linkedView.zoomBy(1 / 1.25);
-  zoomIn.onclick = () => linkedView.zoomBy(1.25);
-  resetView.onclick = () => linkedView.reset();
+  const controlRow=make('div',undefined,'player-control-row');
+  controlRow.append(meta,controls);
+  root.previousElementSibling?.append(createViewerInfo('video-instructions',copy.instructionsLabel,copy.instructions,'section-info'));
   const credit = make('div', undefined, 'video-credit');
   credit.hidden = true;
   const details = make('div', undefined, 'video-details');
-  details.append(credit, make('p', copy.panZoomHint, 'keyboard-hint'), make('p', copy.keyboard, 'keyboard-hint'), make('p', copy.inspectionHint, 'keyboard-hint'));
-  player.append(screens, slider, meta, controls, zoomControls, video);
+  details.append(credit);
+  player.append(screens, slider, controlRow, video);
   const sidebar = make('aside', undefined, 'video-sidebar');
   const sidebarHeading = make('div', undefined, 'sidebar-heading');
   const countLabel = make('span', copy.loadingList);

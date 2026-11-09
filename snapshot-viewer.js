@@ -3,6 +3,7 @@ import { snapshotItems, spotlightPoints, snapshotFocus } from './snapshot-data.j
 import { installLinkedView, focusedView } from './linked-view.js';
 import { comparisonLabels } from './model-labels.js';
 import { createSnapshotCallouts } from './snapshot-callouts.js';
+import { createViewerInfo } from './viewer-info.js';
 
 const make = (tag, text, className) => {
   const node = document.createElement(tag);
@@ -223,6 +224,7 @@ export async function mountSnapshots(root, copy, {warmAfter=Promise.resolve(),on
     return card;
   });
   shell.append(stage, previous, next);
+  root.previousElementSibling?.append(createViewerInfo('snapshot-instructions',labels.instructionsLabel,labels.instructions,'section-info'));
   const dots = make('div', undefined, 'snapshot-dots');
   dots.setAttribute('role', 'group'); dots.setAttribute('aria-label', labels.navigation);
   const dotButtons = snapshots.map((entry, index) => {
@@ -232,7 +234,7 @@ export async function mountSnapshots(root, copy, {warmAfter=Promise.resolve(),on
   });
   const details = make('div', undefined, 'snapshot-details');
   const credit = make('p', undefined, 'snapshot-source');
-  details.append(credit, make('p', copy.panZoomHint, 'keyboard-hint'), make('p', labels.inspectionHint, 'keyboard-hint'));
+  details.append(credit);
   root.replaceChildren(shell, dots, details);
 
   const count = cards.length;

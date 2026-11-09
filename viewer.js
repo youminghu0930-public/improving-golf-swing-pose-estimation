@@ -349,7 +349,7 @@ export async function mountViewer(root, copy, { priorityReady } = {}) {
       button.type = 'button'; button.dataset.key = clip.key;
       button.setAttribute('aria-pressed', String(active?.key === clip.key));
       const image = make('img'); image.src = clip.thumbnail; image.alt = ''; image.loading = 'lazy'; image.decoding = 'async';
-      image.width = 96; image.height = 72;
+      image.width = 64; image.height = 64;
       const caption = make('span'); caption.append(make('strong', format(copy.clipLabel, clip)), make('small', copy.views[clip.view] || clip.view.replaceAll('-', ' ')));
       button.append(image, caption); button.onclick = () => select(clip); list.append(button);
     }
